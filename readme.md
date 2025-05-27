@@ -36,7 +36,7 @@ npm install @sparkstone/css
 
 Explore the docs and theme live:
 
-🔗 [https://sparkstonepdx.github.io/css](https://sparkstonepdx.github.io/css)
+🔗 [https://sparkstonepdx.github.io/css/docs](https://sparkstonepdx.github.io/css/docs)
 
 ---
 
@@ -153,7 +153,3 @@ docs/       # Output static site for GitHub Pages
 ## 💬 License
 
 MIT © [Sparkstone LLC](https://sparkstonepdx.com)
-
-```
-
-```
