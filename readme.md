@@ -2,6 +2,10 @@
 
 A minimal CSS framework inspired by [Pico.css](https://picocss.com), rebuilt with `oklch()` color primitives and a powerful, themeable design system using native CSS custom properties.
 
+**🔗 [View on NPM](https://www.npmjs.com/package/@sparkstone/css) | [View on GitHub](https://github.com/sparkstonepdx/css)**
+
+---
+
 ## ✨ Features
 
 - 💡 Built with `oklch()` for perceptually uniform color scales
