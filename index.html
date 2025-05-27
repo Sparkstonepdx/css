@@ -1,0 +1,114 @@
+<style>
+  body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  body > * {
+    width: 100%;
+    height: 100%;
+  }
+
+  iframe {
+    border: none;
+  }
+
+  iframe#b,
+  iframe#d {
+    color-scheme: light;
+  }
+</style>
+
+<body>
+  <iframe id="a" src="./kitchen-sink-theme.html"></iframe>
+  <iframe id="b" data-theme="light" src="./kitchen-sink-theme.html"></iframe>
+  <iframe id="c" src="./kitchen-sink-pico.html"></iframe>
+  <iframe id="d" data-theme="light" src="./kitchen-sink-pico.html"></iframe>
+</body>
+<script>
+  // Initial log to show access to iframes (optional)
+  function init() {
+    const iframes = Array.from(document.body.children);
+    iframes.forEach(iframe => {
+      try {
+        console.log(iframe.contentDocument);
+      } catch (error) {
+        console.error('Cannot access iframe contentDocument:', error);
+      }
+    });
+  }
+  setTimeout(init, 100);
+
+  (function () {
+    // Lock to prevent recursive sync updates.
+    var isSyncing = false;
+
+    // Sync scroll of all iframes (except the source) to match scrollX and scrollY.
+    function syncIframeScroll(sourceIframe, scrollX, scrollY) {
+      if (isSyncing) {
+        return;
+      }
+      isSyncing = true;
+      var iframes = document.querySelectorAll('iframe');
+      iframes.forEach(function (iframe) {
+        // Only update if it's not the source iframe.
+        if (iframe !== sourceIframe) {
+          try {
+            // Set the scroll position of the iframe's content.
+            iframe.contentWindow.scrollTo(scrollX, scrollY);
+          } catch (error) {
+            console.error('Error syncing iframe scroll:', error);
+          }
+        }
+      });
+      // Reset the syncing flag shortly after update.
+      setTimeout(function () {
+        isSyncing = false;
+      }, 50);
+    }
+
+    // Attaches a scroll event listener to a given iframe.
+    function addScrollListener(iframe) {
+      try {
+        iframe.contentWindow.addEventListener('scroll', function () {
+          var scrollX = iframe.contentWindow.scrollX;
+          var scrollY = iframe.contentWindow.scrollY;
+          // Save the current scroll positions to localStorage.
+          localStorage.setItem('scrollX', scrollX);
+          localStorage.setItem('scrollY', scrollY);
+          // Synchronize the scrolling for all iframes.
+          syncIframeScroll(iframe, scrollX, scrollY);
+        });
+      } catch (error) {
+        console.error('Could not attach scroll listener to iframe:', error);
+      }
+    }
+
+    // After the main window loads, attach scroll listeners to each iframe
+    // and restore scroll positions from localStorage.
+    window.addEventListener('load', function () {
+      var iframes = document.querySelectorAll('iframe');
+
+      // Retrieve the saved scroll positions from localStorage.
+      var savedX = parseInt(localStorage.getItem('scrollX'), 10) || 0;
+      var savedY = parseInt(localStorage.getItem('scrollY'), 10) || 0;
+
+      iframes.forEach(function (iframe) {
+        // Wait for the iframe's content to be fully loaded.
+        if (iframe.contentDocument.readyState === 'complete') {
+          // Restore the saved scroll position.
+          iframe.contentWindow.scrollTo(savedX, savedY);
+          addScrollListener(iframe);
+        } else {
+          iframe.addEventListener('load', function () {
+            // Restore the saved scroll position after the iframe loads.
+            iframe.contentWindow.scrollTo(savedX, savedY);
+            addScrollListener(iframe);
+          });
+        }
+      });
+    });
+  })();
+</script>

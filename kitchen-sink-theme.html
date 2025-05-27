@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>@sparkstone/css Kitchen Sink</title>
+
+    <link rel="stylesheet" href="/dist/reset.css" />
+    <link rel="stylesheet" href="/dist/theme.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>@sparkstone/css Kitchen Sink</h1>
+
+      <section>
+        <h2>Typography</h2>
+        <p>This is a paragraph. <strong>Strong</strong> and <em>Emphasized</em> text.</p>
+        <p class="lead">This is a lead paragraph.</p>
+        <p class="small">This is small text.</p>
+        <p class="muted">This is muted text.</p>
+        <blockquote>A sample blockquote.</blockquote>
+        <hr />
+        <code>Inline code</code>
+        <pre><code>Preformatted block of code</code></pre>
+        <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy
+      </section>
+
+      <section>
+        <h2>Lists</h2>
+        <ul>
+          <li>Unordered List Item</li>
+          <li>Another Item</li>
+        </ul>
+        <ol>
+          <li>Ordered List Item</li>
+          <li>Another Item</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Table</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Header 1</th>
+              <th>Header 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cell 1</td>
+              <td>Cell 2</td>
+            </tr>
+            <tr>
+              <td>Cell 3</td>
+              <td>Cell 4</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Forms</h2>
+        <form>
+          <label>
+            Text input
+            <input type="text" placeholder="Text input" />
+          </label>
+          <label>
+            Email input
+            <input type="email" placeholder="Email input" />
+          </label>
+          <label>
+            Password input
+            <input type="password" placeholder="Password input" />
+          </label>
+          <label>
+            Textarea
+            <textarea placeholder="Textarea"></textarea>
+          </label>
+          <label>
+            Select menu
+            <select>
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </select>
+          </label>
+          <fieldset>
+            <legend>Checkboxes</legend>
+            <label><input type="checkbox" /> Option 1</label>
+            <label><input type="checkbox" /> Option 2</label>
+          </fieldset>
+          <fieldset>
+            <legend>Radio buttons</legend>
+            <label><input type="radio" name="radio" /> Option 1</label>
+            <label><input type="radio" name="radio" /> Option 2</label>
+          </fieldset>
+          <label class="switch"> <input type="checkbox" role="switch" /> Toggle Switch </label>
+          <label>
+            Range slider
+            <input type="range" min="0" max="100" />
+          </label>
+          <label>
+            File upload
+            <input type="file" />
+          </label>
+          <button type="submit" class="primary">Submit Primary</button>
+          <button type="submit" class="secondary">Submit Secondary</button>
+          <button type="submit" class="contrast">Submit Contrast</button>
+          <button type="submit" class="outline">Submit Outline</button>
+          <button type="submit" class="ghost">Submit Ghost</button>
+          <button type="submit" class="semantic">Submit Semantic</button>
+        </form>
+      </section>
+
+      <section disabled>
+        <button disabled type="submit" class="primary">Submit Primary</button>
+        <button disabled type="submit" class="secondary">Submit Secondary</button>
+        <button disabled type="submit" class="contrast">Submit Contrast</button>
+        <button disabled type="submit" class="outline">Submit Outline</button>
+        <button disabled type="submit" class="ghost">Submit Ghost</button>
+        <button disabled type="submit" class="semantic">Submit Semantic</button>
+      </section>
+
+      <section>
+        <h2>Navigation</h2>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h2>Card</h2>
+        <article>
+          <h3>Card Title</h3>
+          <p>Card content. You can add any HTML inside.</p>
+          <footer>
+            <button class="secondary">Action</button>
+          </footer>
+        </article>
+      </section>
+
+      <section>
+        <h2>Dialog / Modal</h2>
+        <dialog id="sampleDialog">
+          <article>
+            <h3>Sample Dialog</h3>
+            <p>
+              This is a dialog/modal using the native &lt;dialog&gt; element styled by Pico.css.
+            </p>
+            <footer>
+              <button onclick="document.getElementById('sampleDialog').close()">Close</button>
+            </footer>
+          </article>
+        </dialog>
+        <button onclick="document.getElementById('sampleDialog').showModal()">Open Dialog</button>
+      </section>
+
+      <section>
+        <h2>Details / Summary</h2>
+        <details>
+          <summary>Click to expand</summary>
+          <p>This content is hidden by default.</p>
+        </details>
+      </section>
+
+      <section>
+        <h2>Progress / Meter</h2>
+        <progress value="70" max="100"></progress>
+        <meter value="0.6">60%</meter>
+      </section>
+
+      <section>
+        <h2>Grid and Layout Helpers</h2>
+        <div class="grid">
+          <div>Grid Item 1</div>
+          <div>Grid Item 2</div>
+          <div>Grid Item 3</div>
+        </div>
+
+        <div class="flex">
+          <div>Flex Item 1</div>
+          <div>Flex Item 2</div>
+        </div>
+
+        <div class="stack">
+          <button>Stacked Button 1</button>
+          <button>Stacked Button 2</button>
+        </div>
+
+        <div class="center">
+          <p>Centered Content</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+@use "sass:string";
+@use "sass:list";
+
+$lcArray: (
+  (98.82%, 0.017),
+  (92.86%, 0.039),
+  (70.13%, 0.137),
+  (53.07%, 0.174),
+  (40.99%, 0.188),
+  (32.24%, 0.174),
+  (26.34%, 0.136),
+  (22.1%, 0.091),
+  (19.02%, 0.052)
+);
+
+$dimLcArray: (
+  (99%, 0),
+  (90%, 0),
+  (80%, 0),
+  (72%, 0),
+  (67%, 0),
+  (50%, 0.05),
+  (35%, 0),
+  (25%, 0),
+  (13%, 0),
+  (5%, 0)
+);
+
+@mixin lightSchemeVars {
+  $len: list.length($lcArray);
+  @for $i from 1 through list.length($lcArray) {
+    $swatch: list.nth($lcArray, $i);
+    $grey-swatch: list.nth($dimLcArray, $i);
+
+    $r: $len - $i + 1;
+    --swatch-lc-#{$i}: #{list.nth($swatch, 1)} #{list.nth($swatch, 2)};
+    --text-lc-#{$i}: var(--swatch-lc-#{$r});
+    --surface-lc-#{$i}: var(--swatch-lc-#{$i});
+
+    --grey-swatch-lc-#{$i}: #{list.nth($grey-swatch, 1)}
+      #{list.nth($grey-swatch, 2)};
+    --grey-text-lc-#{$i}: var(--grey-swatch-lc-#{$r});
+    --grey-surface-lc-#{$i}: var(--grey-swatch-lc-#{$i});
+  }
+  $primary-surface-swatch: list.nth($lcArray, 6);
+  $primary-text-swatch: list.nth($lcArray, 1);
+
+  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)}
+    #{list.nth($primary-surface-swatch, 2)};
+  --primary-text-lc: #{list.nth($primary-text-swatch, 1)}
+    #{list.nth($primary-text-swatch, 2)};
+
+  $primary-grey-surface-swatch: list.nth($dimLcArray, 6);
+  $primary-grey-text-swatch: list.nth($dimLcArray, 1);
+
+  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)}
+    #{list.nth($primary-grey-surface-swatch, 2)};
+  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)}
+    #{list.nth($primary-grey-text-swatch, 2)};
+}
+
+@mixin darkSchemeVars {
+  $len: list.length($lcArray);
+  @for $i from 1 through list.length($lcArray) {
+    $r: $len - $i + 1;
+    $swatch: list.nth($lcArray, $i);
+    $grey-swatch: list.nth($dimLcArray, $i);
+
+    --swatch-lc-#{$r}: #{list.nth($swatch, 1)} #{list.nth($swatch, 2)};
+    --text-lc-#{$i}: var(--swatch-lc-#{$r});
+    --surface-lc-#{$i}: var(--swatch-lc-#{$i});
+
+    --grey-swatch-lc-#{$r}: #{list.nth($grey-swatch, 1)}
+      #{list.nth($grey-swatch, 2)};
+    --grey-text-lc-#{$i}: var(--grey-swatch-lc-#{$r});
+    --grey-surface-lc-#{$i}: var(--grey-swatch-lc-#{$i});
+  }
+  $primary-surface-swatch: list.nth($lcArray, 6);
+  $primary-text-swatch: list.nth($lcArray, 1);
+
+  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)}
+    #{list.nth($primary-surface-swatch, 2)};
+  --primary-text-lc: #{list.nth($primary-text-swatch, 1)}
+    #{list.nth($primary-text-swatch, 2)};
+
+  $primary-grey-surface-swatch: list.nth($dimLcArray, 6);
+  $primary-grey-text-swatch: list.nth($dimLcArray, 1);
+
+  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)}
+    #{list.nth($primary-grey-surface-swatch, 2)};
+  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)}
+    #{list.nth($primary-grey-text-swatch, 2)};
+}
+
+@function oklch-from-vars($color-var, $lightness-var) {
+  @return string.unquote("oklch(from #{$color-var} #{$lightness-var} c h)");
+}
+
+@function get-color($swatch-lc, $color) {
+  @return string.unquote("oklch(from #{$color} #{$swatch-lc} h)");
+}
+
+@function get-grey($swatch-lc, $color) {
+  @return string.unquote("oklch(from #{$color} #{$swatch-lc} * 0 h)");
+}
+
+@function cur-color($swatch-lc) {
+  @return string.unquote("oklch(from var(--color) #{$swatch-lc} h)");
+}
+
+@mixin apply-greyscale() {
+  @for $i from 1 through list.length($lcArray) {
+    --swatch-lc-#{$i}: var(--grey-swatch-lc-#{$i});
+    --text-lc-#{$i}: var(--grey-text-lc-#{$i});
+  }
+  --primary-surface-lc: var(--primary-grey-surface-lc);
+  --primary-text-lc: var(--primary-grey-text-lc);
+}
+
+@function get-border-color() {
+  @return cur-color(var(--surface-lc-4));
+}
