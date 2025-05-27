@@ -18,7 +18,7 @@
       <strong>@sparkstone/css</strong>
     </nav>
       <nav class="flex" style="flex-wrap: wrap">
-      <button id="theme-toggle" class='contrast secondary' type="button" aria-label="Toggle Theme" title="Toggle Theme">🌙</button>
+      <a id="theme-toggle"  aria-label="Toggle Theme" title="Toggle Theme">🌙</a>
         <a href="./index.html">Home</a>
         <a href="./colors.html">Colors</a>
         <a href="./forms.html">Forms</a>
@@ -33,7 +33,7 @@
 
   const updateIcon = () => {
     const scheme = root.getAttribute('data-color-scheme') || 'light';
-    toggleBtn.textContent = scheme === 'dark' ? '🌙' : '☀️';
+    toggleBtn.textContent = scheme === 'dark' ? '🌙 Dark' : '☀️ light';
   };
 
   toggleBtn.addEventListener('click', () => {
