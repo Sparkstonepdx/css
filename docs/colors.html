@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>colors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./theme.css" />
+    <style>
+      main.container {
+        position: relative;
+      }
+      .copy-button {
+        position: absolute;
+        right: 0;
+        z-index: 1;
+      }
+
+      pre {
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+  const saved = sessionStorage.getItem('color-scheme');
+  if (saved) {
+    document.documentElement.setAttribute('data-color-scheme', saved);
+  }
+</script>
+
+<main class="container">
+  <header
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: var(--padding);
+      gap: var(--padding);
+    ">
+    <nav class="flex" style="align-items: center">
+      <strong>@sparkstone/css</strong>
+    </nav>
+      <nav class="flex" style="flex-wrap: wrap">
+      <button id="theme-toggle" class='contrast secondary' type="button" aria-label="Toggle Theme" title="Toggle Theme">🌙</button>
+        <a href="./index.html">Home</a>
+        <a href="./colors.html">Colors</a>
+        <a href="./forms.html">Forms</a>
+        <a href="./containers.html">Containers</a>
+      </nav>
+  </header>
+</main>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  const updateIcon = () => {
+    const scheme = root.getAttribute('data-color-scheme') || 'light';
+    toggleBtn.textContent = scheme === 'dark' ? '🌙' : '☀️';
+  };
+
+  toggleBtn.addEventListener('click', () => {
+    const current = root.getAttribute('data-color-scheme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-color-scheme', next);
+    sessionStorage.setItem('color-scheme', next);
+    updateIcon();
+  });
+
+  updateIcon();
+</script>
+
+    <main class="container">
+<h1>Color Palettes</h1>
+
+
+<p>
+  This CSS library uses <code>oklch()</code> to calculate all colors from a single base color,
+  defined by <code>--color</code>. The system generates lightness-adjusted text and surface swatches
+  using <code>--text-lc-*</code> and <code>--surface-lc-*</code> values, which adapt to light and
+  dark modes automatically. These are used with <code>cur-color()</code> to derive accessible
+  contrast values.
+</p>
+
+<form style="margin-bottom: 2rem">
+  <label>
+    <p>Base Color:</p>
+    <input id="base-color-picker" type="color" title="Select theme base color" />
+  </label>
+
+  
+<div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
+  <article
+    class="card"
+    data-color-scheme="light"
+    style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
+    <p>Light Mode</p>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      ">
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-1) h);
+          color: oklch(from var(--color) var(--text-lc-1) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-1<br />
+        surface-lc-1
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-2) h);
+          color: oklch(from var(--color) var(--text-lc-2) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-2<br />
+        surface-lc-2
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-3) h);
+          color: oklch(from var(--color) var(--text-lc-3) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-3<br />
+        surface-lc-3
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-4) h);
+          color: oklch(from var(--color) var(--text-lc-4) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-4<br />
+        surface-lc-4
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-5) h);
+          color: oklch(from var(--color) var(--text-lc-5) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-5<br />
+        surface-lc-5
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-6) h);
+          color: oklch(from var(--color) var(--text-lc-6) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-6<br />
+        surface-lc-6
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-7) h);
+          color: oklch(from var(--color) var(--text-lc-7) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-7<br />
+        surface-lc-7
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-8) h);
+          color: oklch(from var(--color) var(--text-lc-8) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-8<br />
+        surface-lc-8
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-9) h);
+          color: oklch(from var(--color) var(--text-lc-9) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-9<br />
+        surface-lc-9
+      </article>
+      
+    </div>
+  </article>
+  <div
+    data-color-scheme="dark"
+    style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
+    <p>Dark Mode</p>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      ">
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-1) h);
+          color: oklch(from var(--color) var(--text-lc-1) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-1<br />
+        surface-lc-1
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-2) h);
+          color: oklch(from var(--color) var(--text-lc-2) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-2<br />
+        surface-lc-2
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-3) h);
+          color: oklch(from var(--color) var(--text-lc-3) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-3<br />
+        surface-lc-3
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-4) h);
+          color: oklch(from var(--color) var(--text-lc-4) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-4<br />
+        surface-lc-4
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-5) h);
+          color: oklch(from var(--color) var(--text-lc-5) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-5<br />
+        surface-lc-5
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-6) h);
+          color: oklch(from var(--color) var(--text-lc-6) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-6<br />
+        surface-lc-6
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-7) h);
+          color: oklch(from var(--color) var(--text-lc-7) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-7<br />
+        surface-lc-7
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-8) h);
+          color: oklch(from var(--color) var(--text-lc-8) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-8<br />
+        surface-lc-8
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-9) h);
+          color: oklch(from var(--color) var(--text-lc-9) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-9<br />
+        surface-lc-9
+      </article>
+      
+    </div>
+  </div>
+</div>
+
+</form>
+
+<form style="margin-bottom: 2rem">
+  <div style="--color: var(--accent-color)">
+    <label>
+      <p>Accent Color:</p>
+      <input id="accent-color-picker" type="color" title="Select accent color" />
+    </label>
+
+    
+<div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
+  <article
+    class="card"
+    data-color-scheme="light"
+    style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
+    <p>Light Mode</p>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      ">
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-1) h);
+          color: oklch(from var(--color) var(--text-lc-1) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-1<br />
+        surface-lc-1
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-2) h);
+          color: oklch(from var(--color) var(--text-lc-2) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-2<br />
+        surface-lc-2
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-3) h);
+          color: oklch(from var(--color) var(--text-lc-3) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-3<br />
+        surface-lc-3
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-4) h);
+          color: oklch(from var(--color) var(--text-lc-4) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-4<br />
+        surface-lc-4
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-5) h);
+          color: oklch(from var(--color) var(--text-lc-5) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-5<br />
+        surface-lc-5
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-6) h);
+          color: oklch(from var(--color) var(--text-lc-6) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-6<br />
+        surface-lc-6
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-7) h);
+          color: oklch(from var(--color) var(--text-lc-7) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-7<br />
+        surface-lc-7
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-8) h);
+          color: oklch(from var(--color) var(--text-lc-8) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-8<br />
+        surface-lc-8
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-9) h);
+          color: oklch(from var(--color) var(--text-lc-9) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-9<br />
+        surface-lc-9
+      </article>
+      
+    </div>
+  </article>
+  <div
+    data-color-scheme="dark"
+    style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
+    <p>Dark Mode</p>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      ">
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-1) h);
+          color: oklch(from var(--color) var(--text-lc-1) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-1<br />
+        surface-lc-1
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-2) h);
+          color: oklch(from var(--color) var(--text-lc-2) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-2<br />
+        surface-lc-2
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-3) h);
+          color: oklch(from var(--color) var(--text-lc-3) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-3<br />
+        surface-lc-3
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-4) h);
+          color: oklch(from var(--color) var(--text-lc-4) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-4<br />
+        surface-lc-4
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-5) h);
+          color: oklch(from var(--color) var(--text-lc-5) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-5<br />
+        surface-lc-5
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-6) h);
+          color: oklch(from var(--color) var(--text-lc-6) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-6<br />
+        surface-lc-6
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-7) h);
+          color: oklch(from var(--color) var(--text-lc-7) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-7<br />
+        surface-lc-7
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-8) h);
+          color: oklch(from var(--color) var(--text-lc-8) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-8<br />
+        surface-lc-8
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-9) h);
+          color: oklch(from var(--color) var(--text-lc-9) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-9<br />
+        surface-lc-9
+      </article>
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+</form>
+<form style="margin-bottom: 2rem">
+  <div style="--color: var(--error-color)">
+    <label>
+      <p>Error Color:</p>
+      <input id="error-color-picker" type="color" title="Select accent color" />
+    </label>
+
+    
+<div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
+  <article
+    class="card"
+    data-color-scheme="light"
+    style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
+    <p>Light Mode</p>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      ">
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-1) h);
+          color: oklch(from var(--color) var(--text-lc-1) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-1<br />
+        surface-lc-1
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-2) h);
+          color: oklch(from var(--color) var(--text-lc-2) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-2<br />
+        surface-lc-2
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-3) h);
+          color: oklch(from var(--color) var(--text-lc-3) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-3<br />
+        surface-lc-3
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-4) h);
+          color: oklch(from var(--color) var(--text-lc-4) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-4<br />
+        surface-lc-4
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-5) h);
+          color: oklch(from var(--color) var(--text-lc-5) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-5<br />
+        surface-lc-5
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-6) h);
+          color: oklch(from var(--color) var(--text-lc-6) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-6<br />
+        surface-lc-6
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-7) h);
+          color: oklch(from var(--color) var(--text-lc-7) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-7<br />
+        surface-lc-7
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-8) h);
+          color: oklch(from var(--color) var(--text-lc-8) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-8<br />
+        surface-lc-8
+      </article>
+      
+      <article
+        class="card"
+        style="
+          flex-grow: 1;
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-9) h);
+          color: oklch(from var(--color) var(--text-lc-9) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-9<br />
+        surface-lc-9
+      </article>
+      
+    </div>
+  </article>
+  <div
+    data-color-scheme="dark"
+    style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
+    <p>Dark Mode</p>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      ">
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-1) h);
+          color: oklch(from var(--color) var(--text-lc-1) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-1<br />
+        surface-lc-1
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-2) h);
+          color: oklch(from var(--color) var(--text-lc-2) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-2<br />
+        surface-lc-2
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-3) h);
+          color: oklch(from var(--color) var(--text-lc-3) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-3<br />
+        surface-lc-3
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-4) h);
+          color: oklch(from var(--color) var(--text-lc-4) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-4<br />
+        surface-lc-4
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-5) h);
+          color: oklch(from var(--color) var(--text-lc-5) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-5<br />
+        surface-lc-5
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-6) h);
+          color: oklch(from var(--color) var(--text-lc-6) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-6<br />
+        surface-lc-6
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-7) h);
+          color: oklch(from var(--color) var(--text-lc-7) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-7<br />
+        surface-lc-7
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-8) h);
+          color: oklch(from var(--color) var(--text-lc-8) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-8<br />
+        surface-lc-8
+      </article>
+      
+      <article
+        class="card"
+        style="
+          aspect-ratio: 1;
+          background: oklch(from var(--color) var(--surface-lc-9) h);
+          color: oklch(from var(--color) var(--text-lc-9) h);
+          text-align: left;
+          display: grid;
+          align-content: center;
+          justify-content: center;
+        ">
+        text-lc-9<br />
+        surface-lc-9
+      </article>
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+</form>
+
+</main>
+  </body>
+</html>
+<script type="module">
+  document.querySelectorAll('.copy-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-target');
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
+      });
+    });
+  });
+</script>
+<script type="module">
+  const pickerConfigs = [
+    {
+      var: '--color',
+      id: 'base-color-picker',
+      storage: 'sparkstone-base-color',
+      fallback: 'rebeccapurple',
+    },
+    {
+      var: '--accent-color',
+      id: 'accent-color-picker',
+      storage: 'sparkstone-accent-color',
+      fallback: '#425e00',
+    },
+    {
+      var: '--error-color',
+      id: 'error-color-picker',
+      storage: 'sparkstone-error-color',
+      fallback: 'maroon',
+    },
+  ];
+
+  function getCSSVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function toHex(colorString, fallback) {
+    try {
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.fillStyle = colorString;
+      return ctx.fillStyle;
+    } catch {
+      return fallback;
+    }
+  }
+
+  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
+    const input = document.getElementById(id);
+
+    const stored = sessionStorage.getItem(storage);
+    const initial = stored || toHex(getCSSVar(cssVar), fallback);
+
+    document.documentElement.style.setProperty(cssVar, initial);
+
+    if (!input) continue;
+    input.value = initial;
+
+    input.addEventListener('input', () => {
+      const newValue = input.value;
+      document.documentElement.style.setProperty(cssVar, newValue);
+      sessionStorage.setItem(storage, newValue);
+    });
+  }
+</script>

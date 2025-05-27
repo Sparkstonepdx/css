@@ -1,17 +1,18 @@
 {
   "name": "@sparkstone/css",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A minimal CSS framework inspired by Pico.css, with OKLCH-powered theming and light/dark mode support.",
   "main": "dist/theme.css",
   "style": "dist/theme.css",
+  "type": "module",
   "files": [
     "dist/",
     "src/",
     "README.md"
   ],
   "scripts": {
-    "dev": "sass --watch src/:dist/",
-    "build": "sass src/:dist/",
+    "dev": "node dev.js",
+    "build": "sass src/:dist/ && node build.js",
     "prepublishOnly": "pnpm build"
   },
   "keywords": [
@@ -35,8 +36,13 @@
     "url": "https://github.com/Sparkstonepdx/css/issues"
   },
   "homepage": "https://github.com/Sparkstonepdx/css#readme",
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.11.0",
   "devDependencies": {
-    "sass": "^1.86.3"
+    "chokidar": "^4.0.3",
+    "fast-glob": "^3.3.3",
+    "live-server": "^1.2.2",
+    "nunjucks": "^3.2.4",
+    "sass": "^1.86.3",
+    "vite": "^6.3.5"
   }
 }

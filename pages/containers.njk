@@ -1,0 +1,97 @@
+{% extends "layout.njk" %} {% block content %}
+<h1>Containers</h1>
+<p>
+  This page showcases base containers styled by <code>@sparkstone/css</code>, including
+  <code>article</code>, <code>.card</code>, and <code>&lt;dialog&gt;</code>.
+</p>
+
+<section>
+  <h2>Default Article</h2>
+  <article>
+    <h3>Standard Article</h3>
+    <p>
+      This is a plain <code>&lt;article&gt;</code> element. It uses the default spacing and text
+      styles defined in the theme.
+    </p>
+  </article>
+  <br />
+  <button class="ghost copy-button" data-target="code-article">Copy Code</button>
+  <pre><code class="language-html" id="code-article">
+&lt;article&gt;
+  &lt;h3&gt;Standard Article&lt;/h3&gt;
+  &lt;p&gt;
+    This is a plain &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; element.
+     It uses the default spacing and text styles defined in the theme.
+  &lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+</section>
+
+<section>
+  <h2>Card</h2>
+  <article class="card">
+    <h3>Card Article</h3>
+    <p>
+      This is an article with the <code>.card</code> class. It includes padding, background styling,
+      and a border or shadow depending on the theme.
+    </p>
+  </article>
+  <br />
+  <button class="ghost copy-button" data-target="code-article-card">Copy Code</button>
+  <pre><code class="language-html" id="code-article-card">
+&lt;article class="card"&gt;
+  &lt;h3&gt;Card Article&lt;/h3&gt;
+  &lt;p&gt;
+    This is an article with the &lt;code&gt;.card&lt;/code&gt; class.
+    It includes padding, background styling, and a border or shadow depending on the theme.
+  &lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+</section>
+
+<section>
+  <h2>Dialog Example</h2>
+  <button id="show-dialog">Open Dialog</button>
+
+  <dialog id="demo-dialog">
+    <form method="dialog">
+      <article>
+        <header>
+          <h3>Dialog Heading</h3>
+        </header>
+        <p>
+          This dialog uses the native <code>&lt;dialog&gt;</code> element, which is styled minimally
+          but respectably with the current theme.
+        </p>
+        <footer>
+          <button type="submit">Close</button>
+        </footer>
+      </article>
+    </form>
+  </dialog>
+  <br />
+
+  <br />
+  <button class="ghost copy-button" data-target="code-dialog">Copy Code</button>
+  <pre><code class="language-html" id="code-dialog">
+&lt;button id="show-dialog"&gt;Open Dialog&lt;/button&gt;
+
+&lt;dialog id="demo-dialog"&gt;
+  &lt;form method="dialog"&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h3&gt;Dialog Heading&lt;/h3&gt;
+      &lt;/header&gt;
+      &lt;p&gt;
+        This dialog uses the native &lt;code&gt;&amp;lt;dialog&amp;gt;&lt;/code&gt;
+         element, which is styled minimally but respectably with the current theme.
+      &lt;/p&gt;
+      &lt;footer&gt;
+        &lt;button type="submit"&gt;Close&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+</code></pre>
+</section>
+{% endblock %}

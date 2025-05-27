@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title or "@sparkstone/css" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./theme.css" />
+    <style>
+      main.container {
+        position: relative;
+      }
+      .copy-button {
+        position: absolute;
+        right: 0;
+        z-index: 1;
+      }
+
+      pre {
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "header.njk" %}
+    <main class="container">{% block content %}{% endblock %}</main>
+  </body>
+</html>
+<script type="module">
+  document.querySelectorAll('.copy-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-target');
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
+      });
+    });
+  });
+</script>
+<script type="module">
+  const pickerConfigs = [
+    {
+      var: '--color',
+      id: 'base-color-picker',
+      storage: 'sparkstone-base-color',
+      fallback: 'rebeccapurple',
+    },
+    {
+      var: '--accent-color',
+      id: 'accent-color-picker',
+      storage: 'sparkstone-accent-color',
+      fallback: '#425e00',
+    },
+    {
+      var: '--error-color',
+      id: 'error-color-picker',
+      storage: 'sparkstone-error-color',
+      fallback: 'maroon',
+    },
+  ];
+
+  function getCSSVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function toHex(colorString, fallback) {
+    try {
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.fillStyle = colorString;
+      return ctx.fillStyle;
+    } catch {
+      return fallback;
+    }
+  }
+
+  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
+    const input = document.getElementById(id);
+
+    const stored = sessionStorage.getItem(storage);
+    const initial = stored || toHex(getCSSVar(cssVar), fallback);
+
+    document.documentElement.style.setProperty(cssVar, initial);
+
+    if (!input) continue;
+    input.value = initial;
+
+    input.addEventListener('input', () => {
+      const newValue = input.value;
+      document.documentElement.style.setProperty(cssVar, newValue);
+      sessionStorage.setItem(storage, newValue);
+    });
+  }
+</script>

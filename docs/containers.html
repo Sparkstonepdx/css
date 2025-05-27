@@ -2,7 +2,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>@sparkstone/css</title>
+    <title>containers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./theme.css" />
     <style>
@@ -71,79 +71,101 @@
 </script>
 
     <main class="container">
-<h1>@sparkstone/css</h1>
-
+<h1>Containers</h1>
 <p>
-  <code>@sparkstone/css</code> is a lightweight SCSS framework inspired by
-  <a href="https://picocss.com" target="_blank">Pico.css</a>, but rebuilt from the ground up with
-  <code>oklch()</code> color primitives and a powerful theme system based on native CSS variables.
+  This page showcases base containers styled by <code>@sparkstone/css</code>, including
+  <code>article</code>, <code>.card</code>, and <code>&lt;dialog&gt;</code>.
 </p>
 
-<ul>
-  <li>🎨 Perceptually-uniform color scales via <code>oklch()</code></li>
-  <li>🌗 Graceful light/dark theming using system preferences</li>
-  <li>🧱 Minimal class usage with sensible defaults</li>
-  <li>⚡ No JavaScript required for core styling</li>
-  <li>🧩 Sass functions and mixins for full control</li>
-</ul>
+<section>
+  <h2>Default Article</h2>
+  <article>
+    <h3>Standard Article</h3>
+    <p>
+      This is a plain <code>&lt;article&gt;</code> element. It uses the default spacing and text
+      styles defined in the theme.
+    </p>
+  </article>
+  <br />
+  <button class="ghost copy-button" data-target="code-article">Copy Code</button>
+  <pre><code class="language-html" id="code-article">
+&lt;article&gt;
+  &lt;h3&gt;Standard Article&lt;/h3&gt;
+  &lt;p&gt;
+    This is a plain &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; element.
+     It uses the default spacing and text styles defined in the theme.
+  &lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+</section>
 
-<h2>Get Started</h2>
-<p>Install the package with your preferred package manager:</p>
+<section>
+  <h2>Card</h2>
+  <article class="card">
+    <h3>Card Article</h3>
+    <p>
+      This is an article with the <code>.card</code> class. It includes padding, background styling,
+      and a border or shadow depending on the theme.
+    </p>
+  </article>
+  <br />
+  <button class="ghost copy-button" data-target="code-article-card">Copy Code</button>
+  <pre><code class="language-html" id="code-article-card">
+&lt;article class="card"&gt;
+  &lt;h3&gt;Card Article&lt;/h3&gt;
+  &lt;p&gt;
+    This is an article with the &lt;code&gt;.card&lt;/code&gt; class.
+    It includes padding, background styling, and a border or shadow depending on the theme.
+  &lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+</section>
 
-<pre><code class="language-bash"># pnpm
-pnpm add @sparkstone/css
+<section>
+  <h2>Dialog Example</h2>
+  <button id="show-dialog">Open Dialog</button>
 
-# yarn
-yarn add @sparkstone/css
+  <dialog id="demo-dialog">
+    <form method="dialog">
+      <article>
+        <header>
+          <h3>Dialog Heading</h3>
+        </header>
+        <p>
+          This dialog uses the native <code>&lt;dialog&gt;</code> element, which is styled minimally
+          but respectably with the current theme.
+        </p>
+        <footer>
+          <button type="submit">Close</button>
+        </footer>
+      </article>
+    </form>
+  </dialog>
+  <br />
 
-# npm
-npm install @sparkstone/css</code></pre>
+  <br />
+  <button class="ghost copy-button" data-target="code-dialog">Copy Code</button>
+  <pre><code class="language-html" id="code-dialog">
+&lt;button id="show-dialog"&gt;Open Dialog&lt;/button&gt;
 
-<p>Then import the theme:</p>
-
-<pre><code class="language-js">// SCSS
-import "@sparkstone/css/src/theme.scss";
-
-// or precompiled CSS
-import "@sparkstone/css/theme.css";</code></pre>
-
-<h2>Theming</h2>
-<p>The entire theme can be customized via CSS variables. For example:</p>
-
-<button class="ghost copy-button" data-target="code-default-styles">Copy Code</button>
-<pre><code id="code-default-styles" class="language-css">:root {
-  --color: rebeccapurple;
-  --primary-color: blue;
-  --accent-color: oklch(from var(--color) l c calc(h + 180));
-  --error-color: maroon;
-}</code></pre>
-
-<p>Light and dark mode follow system settings by default. Override manually with:</p>
-
-<pre><code class="language-html">&lt;html data-color-scheme="light"&gt;
-&lt;!-- or --&gt;
-&lt;html data-color-scheme="dark"&gt;</code></pre>
-
-<h2>Docs</h2>
-<p>Explore styled components and utilities:</p>
-<ul>
-  <li><a href="forms.html">Form Elements</a></li>
-  <li><a href="colors.html">Color Palettes</a></li>
-  <li><a href="containers.html">Containers & Dialogs</a></li>
-</ul>
-
-<h2>Live Theme Preview</h2>
-<p>Try customizing the theme color:</p>
-<form style="display: flex; gap: 1rem; align-items: center">
-  <label>
-    Base Color
-    <input type="color" id="base-color-picker" />
-  </label>
-  <label>
-    Accent Color
-    <input type="color" id="accent-color-picker" />
-  </label>
-</form>
+&lt;dialog id="demo-dialog"&gt;
+  &lt;form method="dialog"&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h3&gt;Dialog Heading&lt;/h3&gt;
+      &lt;/header&gt;
+      &lt;p&gt;
+        This dialog uses the native &lt;code&gt;&amp;lt;dialog&amp;gt;&lt;/code&gt;
+         element, which is styled minimally but respectably with the current theme.
+      &lt;/p&gt;
+      &lt;footer&gt;
+        &lt;button type="submit"&gt;Close&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+</code></pre>
+</section>
 </main>
   </body>
 </html>

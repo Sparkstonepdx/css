@@ -1,0 +1,43 @@
+{% extends "layout.njk" %} {% block content %}
+<h1>Color Palettes</h1>
+{% import "../templates/swatch-grid.njk" as swatches %}
+
+<p>
+  This CSS library uses <code>oklch()</code> to calculate all colors from a single base color,
+  defined by <code>--color</code>. The system generates lightness-adjusted text and surface swatches
+  using <code>--text-lc-*</code> and <code>--surface-lc-*</code> values, which adapt to light and
+  dark modes automatically. These are used with <code>cur-color()</code> to derive accessible
+  contrast values.
+</p>
+
+<form style="margin-bottom: 2rem">
+  <label>
+    <p>Base Color:</p>
+    <input id="base-color-picker" type="color" title="Select theme base color" />
+  </label>
+
+  {{ swatches.swatchGrid('lc') }}
+</form>
+
+<form style="margin-bottom: 2rem">
+  <div style="--color: var(--accent-color)">
+    <label>
+      <p>Accent Color:</p>
+      <input id="accent-color-picker" type="color" title="Select accent color" />
+    </label>
+
+    {{ swatches.swatchGrid() }}
+  </div>
+</form>
+<form style="margin-bottom: 2rem">
+  <div style="--color: var(--error-color)">
+    <label>
+      <p>Error Color:</p>
+      <input id="error-color-picker" type="color" title="Select accent color" />
+    </label>
+
+    {{ swatches.swatchGrid() }}
+  </div>
+</form>
+
+{% endblock %}
