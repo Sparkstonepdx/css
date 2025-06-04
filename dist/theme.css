@@ -170,19 +170,13 @@ input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=we
   background-size: 1rem auto;
   background-repeat: no-repeat;
 }
-select:not([multiple], [size]):after,
-input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]):after {
-  content: " ";
-  mask-image: var(--icon-calendar);
-  background-image: red;
-}
 
 select:not([multiple], [size]) {
   background-image: var(--icon-chevron);
 }
 
 input:not([type=checkbox], [type=radio], [type=range], [type=file])[type=time] {
-  mask-image: var(--pico-icon-time);
+  background-image: var(--icon-clock);
 }
 
 [type=date]::-webkit-calendar-picker-indicator,
@@ -203,7 +197,7 @@ input:not([type=checkbox], [type=radio], [type=range], [type=file])[type=time] {
   [type=month],
   [type=time],
   [type=week] {
-    padding-right: var(--pico-form-element-spacing-horizontal) !important;
+    padding-right: 1rem !important;
     background-image: none !important;
   }
 }
@@ -255,6 +249,7 @@ label:has(> input[type=checkbox]) {
   /* border: 2px solid #ccc; */
   /* border-radius: 0.5em; */
   transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 1rem;
 }
 
 label:has(> input[type=checkbox]:checked) {
@@ -277,7 +272,7 @@ input[type=checkbox]::after {
   content: "";
   position: absolute;
   top: 0.55rem;
-  left: 0.7rem;
+  left: 0.6rem;
   width: 0.4rem;
   height: 0.8rem;
   border: solid oklch(from var(--color) var(--surface-lc-1) h);
@@ -411,10 +406,22 @@ input[type=color]::-moz-color-swatch {
   --error-color: maroon;
   --icon-width: 1rem;
   --icon-position: 0.75rem;
-  --box-shadow: 0.0145rem 0.029rem 0.174rem rgba(129, 145, 181, 0.01698),
-    0.0335rem 0.067rem 0.402rem rgba(129, 145, 181, 0.024), 0.0625rem 0.125rem 0.75rem rgba(129, 145, 181, 0.03),
-    0.1125rem 0.225rem 1.35rem rgba(129, 145, 181, 0.036), 0.2085rem 0.417rem 2.502rem rgba(129, 145, 181, 0.04302),
-    0.5rem 1rem 6rem rgba(129, 145, 181, 0.06), 0 0 0 0.0625rem rgba(129, 145, 181, 0.015);
+  --box-shadow:
+    0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
+    0.0335rem 0.067rem 0.402rem oklch(from #000 l c h / 0.024),
+    0.0625rem 0.125rem 0.75rem oklch(from #000 l c h / 0.03),
+    0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036),
+    0.2085rem 0.417rem 2.502rem oklch(from #000 l c h / 0.04302),
+    0.5rem 1rem 6rem oklch(from #000 l c h / 0.06),
+    0 0 0 0.0625rem oklch(from #000 l c h / 0.015);
+  --box-shadow:
+    0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
+    0.0335rem 0.067rem 0.402rem oklch(from #000 l c h / 0.024),
+    0.0625rem 0.125rem 0.75rem oklch(from #000 l c h / 0.03),
+    0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036)
+      /* 0.2085rem 0.417rem 2.502rem oklch(from #000 l c h / 0.04302) */
+      /* 0.5rem 1rem 6rem oklch(from #000 l c h / 0.06), */
+      /* 0 0 0 0.0625rem oklch(from #000 l c h / 0.015); */;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -710,7 +717,7 @@ blockquote {
 hr {
   margin: 1rem 0;
   border: 0;
-  border-top: 1px solid oklch(from var(--color) var(--surface-lc-2) h);
+  border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
 }
 
 code,
@@ -777,7 +784,11 @@ label {
   --border-radius: 2rem;
 }
 
-*:is(button, [type=button], [type=submit], [type=reset], [role=button]) {
+*:is(button,
+[type=button],
+[type=submit],
+[type=reset],
+[role=button]) {
   border: var(--border-width) solid oklch(from var(--color) var(--primary-surface-lc) h);
   display: inline-block;
   text-decoration: none;
@@ -787,24 +798,44 @@ label {
   background-color: oklch(from var(--color) var(--primary-surface-lc) h);
   color: oklch(from var(--color) var(--primary-text-lc) h);
 }
-*:is(button, [type=button], [type=submit], [type=reset], [role=button]).semantic {
+*:is(button,
+[type=button],
+[type=submit],
+[type=reset],
+[role=button]).semantic {
   all: unset;
   cursor: pointer;
 }
-*:is(button, [type=button], [type=submit], [type=reset], [role=button]).secondary {
+*:is(button,
+[type=button],
+[type=submit],
+[type=reset],
+[role=button]).secondary {
   border-color: oklch(from var(--color) var(--text-lc-4) h);
   color: oklch(from var(--color) var(--text-lc-3) h);
   background: transparent;
 }
-*:is(button, [type=button], [type=submit], [type=reset], [role=button]).ghost {
+*:is(button,
+[type=button],
+[type=submit],
+[type=reset],
+[role=button]).ghost {
   color: oklch(from var(--color) var(--text-lc-3) h);
   background-color: transparent;
   border-color: transparent;
 }
-*:is(button, [type=button], [type=submit], [type=reset], [role=button]).contrast {
+*:is(button,
+[type=button],
+[type=submit],
+[type=reset],
+[role=button]).contrast {
   --color: var(--fallback-color);
 }
-*:is(button, [type=button], [type=submit], [type=reset], [role=button]).primary {
+*:is(button,
+[type=button],
+[type=submit],
+[type=reset],
+[role=button]).primary {
   background-color: oklch(from var(--color) var(--primary-surface-lc) h);
   color: oklch(from var(--color) var(--primary-text-lc) h);
   border-color: oklch(from var(--color) var(--primary-surface-lc) h);
@@ -961,7 +992,7 @@ progress::-moz-progress-bar {
 
 article.card,
 .card {
-  border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+  border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   background-color: oklch(from var(--color) var(--surface-lc-1) h);
   padding: var(--padding);
   border-radius: var(--border-radius);

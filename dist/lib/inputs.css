@@ -90,19 +90,13 @@ input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=we
   background-size: 1rem auto;
   background-repeat: no-repeat;
 }
-select:not([multiple], [size]):after,
-input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]):after {
-  content: " ";
-  mask-image: var(--icon-calendar);
-  background-image: red;
-}
 
 select:not([multiple], [size]) {
   background-image: var(--icon-chevron);
 }
 
 input:not([type=checkbox], [type=radio], [type=range], [type=file])[type=time] {
-  mask-image: var(--pico-icon-time);
+  background-image: var(--icon-clock);
 }
 
 [type=date]::-webkit-calendar-picker-indicator,
@@ -123,7 +117,7 @@ input:not([type=checkbox], [type=radio], [type=range], [type=file])[type=time] {
   [type=month],
   [type=time],
   [type=week] {
-    padding-right: var(--pico-form-element-spacing-horizontal) !important;
+    padding-right: 1rem !important;
     background-image: none !important;
   }
 }
@@ -175,6 +169,7 @@ label:has(> input[type=checkbox]) {
   /* border: 2px solid #ccc; */
   /* border-radius: 0.5em; */
   transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 1rem;
 }
 
 label:has(> input[type=checkbox]:checked) {
@@ -197,7 +192,7 @@ input[type=checkbox]::after {
   content: "";
   position: absolute;
   top: 0.55rem;
-  left: 0.7rem;
+  left: 0.6rem;
   width: 0.4rem;
   height: 0.8rem;
   border: solid oklch(from var(--color) var(--surface-lc-1) h);
