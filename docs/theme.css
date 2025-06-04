@@ -410,18 +410,7 @@ input[type=color]::-moz-color-swatch {
     0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
     0.0335rem 0.067rem 0.402rem oklch(from #000 l c h / 0.024),
     0.0625rem 0.125rem 0.75rem oklch(from #000 l c h / 0.03),
-    0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036),
-    0.2085rem 0.417rem 2.502rem oklch(from #000 l c h / 0.04302),
-    0.5rem 1rem 6rem oklch(from #000 l c h / 0.06),
-    0 0 0 0.0625rem oklch(from #000 l c h / 0.015);
-  --box-shadow:
-    0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
-    0.0335rem 0.067rem 0.402rem oklch(from #000 l c h / 0.024),
-    0.0625rem 0.125rem 0.75rem oklch(from #000 l c h / 0.03),
-    0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036)
-      /* 0.2085rem 0.417rem 2.502rem oklch(from #000 l c h / 0.04302) */
-      /* 0.5rem 1rem 6rem oklch(from #000 l c h / 0.06), */
-      /* 0 0 0 0.0625rem oklch(from #000 l c h / 0.015); */;
+    0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036);
 }
 
 @media (prefers-color-scheme: dark) {

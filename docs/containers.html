@@ -166,7 +166,14 @@
 &lt;/dialog&gt;
 </code></pre>
 </section>
-</main>
+<script>
+  const dialog = document.getElementById('demo-dialog');
+  const openBtn = document.getElementById('show-dialog');
+
+  openBtn?.addEventListener('click', () => {
+    dialog?.showModal();
+  });
+</script></main>
   </body>
 </html>
 <script type="module">
