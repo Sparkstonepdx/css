@@ -406,8 +406,7 @@ input[type=color]::-moz-color-swatch {
   --error-color: maroon;
   --icon-width: 1rem;
   --icon-position: 0.75rem;
-  --box-shadow:
-    0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
+  --box-shadow: 0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
     0.0335rem 0.067rem 0.402rem oklch(from #000 l c h / 0.024),
     0.0625rem 0.125rem 0.75rem oklch(from #000 l c h / 0.03),
     0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036);
@@ -876,17 +875,18 @@ dialog::backdrop {
   inset: 0;
   background: rgba(0, 0, 0, 0.1);
 }
-dialog > article,
-dialog > form > article {
+dialog > article {
   width: 100%;
-  max-height: calc(100vh - 2rem);
-  margin: 1rem;
+  /* max-height: calc(100vh - 1rem * 2); */
+  max-height: 100lvh;
+  /* margin: 1rem; */
   overflow: auto;
   color: oklch(from var(--color) var(--text-lc-1) h);
 }
 dialog > article > footer,
-dialog > form > article > footer {
+dialog > article > form > footer {
   text-align: right;
+  justify-content: end;
 }
 
 article {
@@ -895,7 +895,8 @@ article {
   background-color: oklch(from var(--color) var(--surface-lc-2) h);
   box-shadow: var(--box-shadow);
 }
-article > footer {
+
+:is(article > footer, article > form > footer) {
   margin-top: 1rem;
   padding-top: 1rem;
   border-bottom-right-radius: var(--border-radius);
@@ -903,15 +904,11 @@ article > footer {
   border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
 }
 
-article > [type=button],
-article > [type=reset],
-article > [type=submit],
-article > footer > [type=button],
-article > footer > [type=reset],
-article > footer > [type=submit],
-article > header > [type=button],
-article > header > [type=reset],
-article > header > [type=submit] {
+:is(article,
+article > footer,
+article > form > footer,
+article > header,
+article > form > header) > :is([type=button], [type=reset], [type=submit]) {
   margin-bottom: 0;
 }
 
@@ -922,16 +919,20 @@ article > header > [type=submit] {
   }
 }
 @media (min-width: 768px) {
-  dialog > article,
-  dialog > form > article {
+  :is(dialog > article, dialog > form > article) {
     max-width: 700px;
   }
 }
 fieldset {
-  border-color: oklch(from var(--color) var(--surface-lc-4) h);
+  border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   border-radius: var(--border-radius);
-  border-width: var(--border-width);
+  /* box-shdow: var(--box-shadow); */
+  padding: 1rem 1rem;
   margin-bottom: 1rem;
+}
+fieldset > legend {
+  margin-left: -0.5rem;
+  padding: 0 0.5rem;
 }
 
 table {
